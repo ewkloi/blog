@@ -1,0 +1,63 @@
+spring:
+  thymeleaf:
+    mode: HTML
+    cache: false
+    servlet:
+      content-type: text/html
+    prefix: classpath:/templates/
+    suffix: .html
+#    数据库连接
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.37.18.41:3306/blog?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    username: root
+    password: pwhfblogmysql007
+  jpa:
+    show-sql: true
+#    国际化文件
+  messages:
+    basename: i18n/messages
+logging:
+  level:
+    root: info
+    cn.edu: debug
+  file:
+    path: log/blog.log
+server:
+  port: 80
+#mybatis
+mybatis:
+  #  扫描mapper文件
+  mapper-locations: classpath:mapper/*.xml
+#  自动别名扫描
+  type-aliases-package: cn.edu.po
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 3000
+#分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+# 配置一些属性默认值
+#游客评论头像
+comment:
+  avatar: /images/avatar.jpg
+#注册用户默认头像
+default:
+  avatar: /images/default.jpg
+#以下是自定义的全局属性，在Controller中可以通过@Value("index.xxx")注入到相应的属性中
+#首页自定义相关配置
+index:
+  typeSize: 6
+  tagSize: 10
+  nrBlogSize: 8
+  nBlogSize: 3
+#分页条数=pagesize-1
+#每页显示10条数据
+pageRequest:
+  pagesize: 9

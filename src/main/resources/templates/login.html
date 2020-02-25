@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"   xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>登录</title>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"/>
+  <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}"/>
+  <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body  .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+</head>
+<body>
+<!--顶部栏-->
+<div th:replace="_fragments :: header(1)">
+  <nav id="head" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <div class="ui container">
+      <div class="ui inverted secondary stackable menu">
+        <h2 class="ui teal header item">HanFeng's Blog</h2>
+        <a href="#" th:href="@{/}" class=" m-item item m-mobile-hide"
+           th:classappend="${n==1} ? 'active'"><i
+            class="mimi home icon"></i>首页</a>
+        <a href="#" th:href="@{/types/{id}(id='-1')}" class="m-item item m-mobile-hide"
+           th:classappend="${n==2} ? 'active'"><i
+            class="mimi idea icon"></i>分类</a>
+        <a href="#" th:href="@{/tags/{id}(id='-1')}" class="m-item item m-mobile-hide"
+           th:classappend="${n==3} ? 'active'"><i
+            class="mimi tags icon"></i>标签</a>
+        <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide"
+           th:classappend="${n==4} ? 'active'"><i
+            class="mimi clone icon"></i>归档</a>
+        <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide"
+           th:classappend="${n==5} ? 'active'"><i
+            class="mimi info icon"></i>关于我</a>
+        <div  class="right m-item  item m-mobile-hidden">
+          <form name="search-form" action="" method="post" th:action="@{/search}" target="_blank">
+            <div class="ui icon inverted transparent input">
+              <input type="text" name="search" placeholder="Search...."/>
+              <i onclick="document.forms('search-form') .submit()" class="search link icon"></i>
+            </div>
+          </form>
+          <div class=" ui dropdown item">
+            <div class="text">
+              <img class="ui avatar image" src="http://pic.yupoo.com/weikisa/b3ef1aa9/2ca116f6.jpeg"
+                   th:src="${session.user!=null}?${session.user.avatar}:'http://pic.yupoo.com/weikisa/b3ef1aa9/2ca116f6.jpeg'">
+              <span th:text="${session.user}!=null?${session.user.nickName}:'未登录'">未登录</span>
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <a th:href="@{/user/login}" class="item" th:if="${session.user == null}">登录</a>
+              <a th:href="@{/user/register}" class="item" th:if="${session.user == null}">注册</a>
+              <a th:href="@{/user/layout}" class="item" th:if="${session.user != null}">注销</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-top-right m-mobile-show">
+      <i class="sidebar icon"></i>
+    </a>
+  </nav>
+</div>
+<!--中间栏-->
+<div class="m-container-small m-padded-tb-massive" style="max-width: 30em">
+  <div class="ui container">
+    <div class="ui middle aligned center aligned grid">
+      <div class="column">
+        <h2 class="ui teal image header">
+          <!--						<img src="../../static/images/wechat.jpg" th:src="/images/wechat.jpg" class="image">-->
+          <div class="content">
+            用户登录
+          </div>
+        </h2>
+        <form class="ui large form" method="post" th:object="${user}" th:action="@{/user/login}">
+          <div class="ui failed message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <p th:text="${message}">用户名或密码错误！</p>
+          </div>
+          <div class="ui stacked segment">
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" name="username" placeholder="用户名" th:test="${username}">
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <input type="password" name="password" placeholder="密码" th:test="${password}">
+              </div>
+            </div>
+            <button class="ui fluid large teal submit button">登  录</button>
+          </div>
+          <div class="ui error mini message"></div>
+        </form>
+        <a th:href="@{/user/register}">
+          <div class="ui teal right floated animated button" tabindex="0">
+            <div class="visible content">还没注册？</div>
+            <div class="hidden content">
+              去注册<i class="right arrow icon"></i>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--底部栏 -->
+<div th:replace="_fragments :: footer">
+  <footer class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+      <div class="ui inverted divided stackable grid">
+        <div class="three wide column">
+          <div class="ui inverted link list">
+            <div class="item">
+              <img src="../../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}"
+                   class="ui rounded image" style="width: 110px;" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+          <div id="newblog-container">
+            <div class="ui inverted link list" th:fragment="newestBlogList">
+              <a th:each="blog:${nblogs}" href="#" target="_blank" class="item"
+                 th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}">用户故事（User
+                Story）</a>
+            </div>
+          </div>
+        </div>
+        <div class="four wide column">
+          <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Email：chenyongchang00@126.com</a>
+            <a href="#" class="item">QQ：1451462560</a>
+          </div>
+        </div>
+        <div class="six wide column">
+          <h4 class="ui inverted header  m-text-thin m-text-spaced">Blog</h4>
+          <p class="m-text-thin m-text-spaced m-opactity-mimi">
+            这是我的个人博客，会分享关于编程、写作、思考以及生活感想相关的任何内容，希望可以给来到这儿的人有所帮助....</p>
+        </div>
+      </div>
+      <div class=" ui inverted section divider"></div>
+      <p class="m-text-thin m-text-spaced m-opactity-tiny">©2019 Blog Designed by HanFeng</p>
+    </div>
+  </footer>
+</div>
+<!--script-->
+<th:block th:replace="_fragments ::script">
+  <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
+  <script src="../static/lib/qrcodejs/qrcode.js" th:src="@{/lib/qrcodejs/qrcode.js}"></script>
+  <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $('.ui.dropdown').dropdown({
+      on : 'hover'
+    });
+    $("#newblog-container").load("[[@{/footer/newblogs}]]");
+  </script>
+</th:block>
+<script>
+  $('.ui.form').form({
+    fields: {
+      username: {
+        identifier: 'username',
+        rules: [{
+          type: 'empty',
+          prompt: '用户名不能为空'
+        }]
+      },
+      password: {
+        identifier: 'password',
+        rules: [{
+          type: 'empty',
+          prompt: '密码不能为空'
+        }]
+      }
+
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"   xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragments :: head(~{::title})">
+
+  <title>标签管理</title>
+
+</head>
+<body>
+<!--顶部栏-->
+<div th:replace="admin/_fragments :: admin_header(3)"></div>
+<!--中间栏-->
+<div class="ui attached segment">
+  <div class="m-container m-padded-tb-small">
+    <div class="ui container">
+      <!--	message		-->
+      <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+        <i class="close icon"></i>
+        <div class="header">提示：</div>
+        <p th:text="${message}">恭喜，操作成功！</p>
+      </div>
+      <table class="ui celled table center aligned">
+        <tr>
+          <a th:href="@{/admin/tags/input}"
+             class="ui mini right floated m-margin-bottom-small teal basic button">
+            <i class="add icon"></i>
+            新增</a>
+          </th>
+        </tr>
+        <thead>
+        <tr>
+          <th></th>
+          <th>名称</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tag,iterStat:${page.list}">
+          <td th:text="${iterStat.count}">1</td>
+          <td th:text="${tag.name}">标签名称</td>
+          <td>
+            <a href="#" th:href="@{/admin/tags/{id}/input(id=${tag.id})}"
+               class="ui mini teal basic button">编辑</a>
+            <a href="#" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}" onclick="return confirm('您确认要删除吗？')"
+               class="ui mini red basic button">删除</a>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot th:if="${page.pages}>1">
+        <tr >
+          <th colspan="6" >
+            <div class="ui mini pagination menu">
+              <a th:href="@{/admin/tags/(pageNum=${page.prePage})}" class="item"
+                 th:if="${page.hasPreviousPage}">上一页</a>
+              <a th:href="@{/admin/tags/(pageNum=${page.nextPage})}" class="item"
+                 th:if="${page.hasNextPage}">下一页</a>
+            </div>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--script-->
+<th:block th:replace="admin/_fragments :: script">
+  <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script src="../../static/lib/editormd/editormd.min.js"
+          th:src="@{/lib/editormd/editormd.min.js}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $('.ui.dropdown').dropdown({
+      on: 'hover'
+    });
+    $('.message .close').on('click',function (){
+      $(this).closest('.message').transition('fade');
+    } );
+  </script>
+</th:block>
+<script>
+  $('.message .close').on('click',function (){
+    $(this).closest('.message').transition('fade');
+  } );
+</script>
+</body>
+</html>

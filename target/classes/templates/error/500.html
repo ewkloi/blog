@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <title>500错误页面</title>
+    <link href="../../static/css/pintuer.css" type="text/css" th:href="@{/css/pintuer.css}"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"/>
+</head>
+
+<body>
+
+<div class="m-container m-padded-tb-large">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <div class="container" style=" margin-top:8%;">
+                <div class="panel margin-big-top">
+                    <div class="text-center">
+                        <br>
+                        <h2 class="padding-top">
+                            <stong th:test="${message}">500错误！服务器出现故障，请联系管理员</stong>
+                        </h2>
+                        <div class="">
+                            <div class="float-left">
+                                <img src="../../static/images/ds-1.gif" th:src="@{/images/ds-1.gif}">
+
+                            </div>
+                            <div class="float-right">
+                                <img src="../../static/images/ds-2.png" th:src="@{/images/ds-2.png}" width="260">
+                            </div>
+                        </div>
+                        <div class="padding-big">
+                            <a href="https://www.baidu.com/" th:href="@{/}" class="button bg-yellow">返回首页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部栏 -->
+
+<th:block th:replace="_fragments :: script">
+    <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
+    <script src="../static/lib/qrcodejs/qrcode.js" th:src="@{/lib/qrcodejs/qrcode.js}"></script>
+    <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+        $("#newblog-container").load("[[@{/footer/newblogs}]]");
+    </script>
+</th:block>
+</body>
+</html>

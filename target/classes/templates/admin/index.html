@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragments :: head(~{::title})">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>首页</title>
+
+  <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"/>
+  <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}"/>
+
+</head>
+<body>
+<!--导航栏-->
+<div th:replace="admin/_fragments :: admin_header(0)"></div>
+<!--中间栏-->
+<div class="ui attached segment">
+  <div class="m-container m-padded-tb-large">
+    <div class="ui container">
+      <div class="ui success large message">
+        <h2>Hi,</h2>
+        <p>陈永昌，欢迎登录！</p>
+      </div>
+      <img src="https://unsplash.it/1000/400?image=1005 " class="ui rounded bordered fluid image">
+    </div>
+  </div>
+</div>
+
+<!--script-->
+<th:block th:replace="admin/_fragments :: script">
+  <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script src="../../static/lib/editormd/editormd.min.js"
+          th:src="@{/lib/editormd/editormd.min.js}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $('.ui.dropdown').dropdown({
+      on: 'hover'
+    });
+    $('.message .close').on('click',function (){
+      $(this).closest('.message').transition('fade');
+    } );
+  </script>
+</th:block>
+
+</body>
+</html>

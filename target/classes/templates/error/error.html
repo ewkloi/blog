@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+  <title>error</title>
+  <link href="../../static/css/pintuer.css" type="text/css" th:href="@{/css/pintuer.css}"
+        rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}"/>
+  <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"/>
+</head>
+<body>
+
+<div>
+  <h1>错误</h1>
+  <div>
+    <div th:utext="'&lt;!--'" th:remove="tag"></div>
+    <div th:utext="'Failed Request URL : '+ ${url}" th:remove="tag"></div>
+    <div th:utext="'Exception message : '+ ${exception.message}" th:remove="tag"></div>
+    <ul th:remove="tag">
+      <li th:each="st : ${exception.stackTrace}" th:remove="tag">
+        <span th:utext="${st}" th:remove="tag"></span>
+      </li>
+    </ul>
+    <div th:utext="'--&gt;'" th:remove="tag"></div>
+  </div>
+</div>
+
+<th:block th:replace="_fragments :: script">
+  <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
+  <script src="../static/lib/qrcodejs/qrcode.js" th:src="@{/lib/qrcodejs/qrcode.js}"></script>
+  <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $("#newblog-container").load("[[@{/footer/newblogs}]]");
+  </script>
+</th:block>
+</body>
+</html>

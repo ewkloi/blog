@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.mapper.UserMapper">
+
+  <delete id="delete">
+    delete from t_user where id=#{id}
+  </delete>
+
+  <select id="findById" resultType="cn.edu.po.User">
+        select * from t_user where id = #{id}
+  </select>
+
+  <insert id="save">
+    insert into t_user(id,username,nick_name,password,type,email,avatar,create_time,update_time)
+    values (#{id},#{username},#{nickName},#{password},#{type},#{email},#{avatar},#{createTime},#{updateTime})
+  </insert>
+
+  <select id="findByName" resultType="cn.edu.po.User">
+    select username,nick_name from t_user where username=#{username} or nick_name=#{nickName}
+  </select>
+
+  <select id="findByUsernameAndPassword"  resultType="cn.edu.po.User">
+        select * from t_user where username=#{username} and password=#{password}
+  </select>
+  <select id="list" resultType="cn.edu.po.User">
+    select id, username, nick_name, type, email, avatar, create_time, update_time
+     from t_user where t_user.type=false
+  </select>
+</mapper>

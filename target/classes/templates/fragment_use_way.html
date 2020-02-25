@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments :: head(~{::title})">
+  <title>测试</title>
+</head>
+<body>
+
+<!--顶部栏-->
+<div th:replace="_fragments :: header(1)"></div>
+
+<!--中间栏-->
+
+<!--底部栏 -->
+<div th:replace="_fragments :: footer"></div>
+<!--script-->
+<th:block th:replace="_fragments :: script"></th:block>
+
+<script>
+  $('.menu.toggle').click(function () {
+    $('.m-item').toggleClass('m-mobile-hide');
+  });
+</script>
+</body>
+</html>

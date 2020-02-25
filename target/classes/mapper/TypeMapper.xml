@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.mapper.TypeMapper">
+
+  <insert id="save" parameterType="cn.edu.po.Type">
+        insert into t_type(name) values (#{name});
+  </insert>
+
+  <delete id="delete">
+        delete from t_type where id = #{id}
+    </delete>
+
+  <update id="update" parameterType="cn.edu.po.Type">
+        update t_type set name = #{name} where id = #{id};
+    </update>
+
+  <select id="findById" resultType="cn.edu.po.Type">
+        select * from t_type where id = #{id}
+  </select>
+
+  <select id="findByName" resultType="cn.edu.po.Type">
+        select * from t_type where name = #{name}
+  </select>
+
+  <select id="list" resultType="cn.edu.po.Type">
+        select * from t_type
+  </select>
+
+  <resultMap id="topTypes" type="cn.edu.po.Type">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="size" column="tsize"/>
+  </resultMap>
+
+  <select id="getTopType" resultMap="topTypes">
+       select  t.*,b.id bid,b.title,count(t.id) tsize from t_blog b join t_type t on b.type_id=t.id
+       where b.published=true group by(t.id) order by count(t.id) desc
+        <if test="num!=-1">
+            limit #{num}
+        </if>
+  </select>
+</mapper>

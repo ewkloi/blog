@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.mapper.BlogAndTagMapper">
+  <resultMap id="blogAndTag" type="cn.edu.po.BlogAndTag">
+    <result property="blogId" column="blogs_id"/>
+    <result property="tagId"  column="tags_id"/>
+  </resultMap>
+  <insert id="save" parameterType="cn.edu.po.BlogAndTag">
+        insert into t_blog_tags(blogs_id, tags_id) values (#{blogId},#{tagId});
+  </insert>
+  <delete id="delete" parameterType="cn.edu.po.BlogAndTag">
+        delete from t_blog_tags where blogs_id=#{blogId} and tags_id=#{tagId}
+  </delete>
+  <delete id="deleteByBlogId">
+        delete from t_blog_tags where blogs_id=#{id}
+  </delete>
+  <select id="findByBlogId" resultMap="blogAndTag">
+    select * from t_blog_tags where blogs_id=#{blogId}
+  </select>
+  <select id="findByTagId" resultMap="blogAndTag">
+    select * from t_blog_tags where tags_id=#{tagId}
+  </select>
+</mapper>

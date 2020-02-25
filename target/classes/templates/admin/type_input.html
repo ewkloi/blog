@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragments :: admin_head(~{::title})">
+  <meta charset="utf-8"/>
+  <title>新增分类</title>
+</head>
+<body>
+<!--顶部栏-->
+<div th:replace="admin/_fragments :: admin_header(2)"></div>
+<!--中间栏-->
+<div class="ui attached segment">
+  <div class="m-container-small m-padded-tb-large">
+    <div class="ui container">
+      <form action="#" method="post" th:object="${type}" th:action="*{id}==null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}" class="ui form">
+        <div class="field">
+          <div class="ui left labeled input">
+            <input type="hidden" name="id" th:value="*{id}">
+            <label class="ui teal basic label">名称</label>
+            <input type="text" name="name" placeholder="分类名称" th:value="*{name}"/>
+          </div>
+        </div>
+        <div class="ui right aligned container">
+          <button type="button" class=" ui button" onclick="window.history.go(-1)">返回</button>
+          <button class="ui teal submit button">提交</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--script-->
+<th:block th:replace="admin/_fragments :: script">
+  <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <script src="../../static/lib/editormd/editormd.min.js"
+          th:src="@{/lib/editormd/editormd.min.js}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $('.ui.dropdown').dropdown({
+      on: 'hover'
+    });
+    $('.message .close').on('click',function (){
+      $(this).closest('.message').transition('fade');
+    } );
+  </script>
+</th:block>
+<script>
+  $('.ui.form').form({
+    field: {
+      name: {
+        identifier: 'name',
+        rules: [{
+          type: 'empty',
+          prompt: '名称：请输入分类名称'
+        }]
+      }
+    }
+  });
+</script>
+</body>
+</html>
