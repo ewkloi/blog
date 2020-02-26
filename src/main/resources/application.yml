@@ -9,10 +9,9 @@ spring:
 #    数据库连接
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://101.37.18.41:3306/blog?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
     username: root
-    password: pwhfblogmysql007
-  jpa:
+    password: 
     show-sql: true
 #    国际化文件
   messages:
