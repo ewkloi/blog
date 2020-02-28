@@ -1,0 +1,355 @@
+2020-02-28 20:48:41.086  INFO 486140 --- [restartedMain] cn.edu.VcblogApplication                 : Starting VcblogApplication on LAPTOP-U98MSAIS with PID 486140 (E:\Github_project\blog\target\classes started by ewklo in E:\Github_project\blog)
+2020-02-28 20:48:41.117 DEBUG 486140 --- [restartedMain] cn.edu.VcblogApplication                 : Running with Spring Boot v2.2.3.RELEASE, Spring v5.2.3.RELEASE
+2020-02-28 20:48:41.117  INFO 486140 --- [restartedMain] cn.edu.VcblogApplication                 : No active profile set, falling back to default profiles: default
+2020-02-28 20:48:41.164  INFO 486140 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-02-28 20:48:41.164  INFO 486140 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-02-28 20:48:42.477  INFO 486140 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-28 20:48:42.492  INFO 486140 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11ms. Found 0 JPA repository interfaces.
+2020-02-28 20:48:42.773  INFO 486140 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-28 20:48:43.304  INFO 486140 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-02-28 20:48:43.304  INFO 486140 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-28 20:48:43.304  INFO 486140 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-28 20:48:43.414  INFO 486140 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-28 20:48:43.414  INFO 486140 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2250 ms
+2020-02-28 20:48:44.382  INFO 486140 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-28 20:48:44.476  INFO 486140 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-02-28 20:48:44.913  INFO 486140 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-02-28 20:48:44.945  INFO 486140 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-02-28 20:48:44.960  INFO 486140 --- [restartedMain] cn.edu.VcblogApplication                 : Started VcblogApplication in 4.381 seconds (JVM running for 6.142)
+2020-02-28 20:49:31.059  INFO 486140 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-28 20:49:31.059  INFO 486140 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-28 20:49:31.075  INFO 486140 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2020-02-28 20:49:31.106  INFO 486140 --- [http-nio-80-exec-1] cn.edu.aspect.LogAspect                  : Request : {url='/', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.index', args=[1, {}]}
+2020-02-28 20:49:31.122  INFO 486140 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-28 20:49:31.731  INFO 486140 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-28 20:49:31.778 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.TypeMapper.getTopType      : ==>  Preparing: select t.*,b.id bid,b.title,count(t.id) tsize from t_blog b join t_type t on b.type_id=t.id where b.published=true group by(t.id) order by count(t.id) desc limit ? 
+2020-02-28 20:49:31.809 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.TypeMapper.getTopType      : ==> Parameters: 10(Integer)
+2020-02-28 20:49:32.200 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.TypeMapper.getTopType      : <==      Total: 6
+2020-02-28 20:49:32.325 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.TagMapper.getTopTag        : ==>  Preparing: select t.*,b.id bid,b.title from t_blog_tags bt join t_tag t on bt.tags_id=t.id join t_blog b on bt.blogs_id=b.id where b.published=true order by b.update_time desc limit ? 
+2020-02-28 20:49:32.325 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.TagMapper.getTopTag        : ==> Parameters: 10(Integer)
+2020-02-28 20:49:32.340 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.TagMapper.getTopTag        : <==      Total: 5
+2020-02-28 20:49:32.340 DEBUG 486140 --- [http-nio-80-exec-1] c.e.m.BlogMapper.getNewestRecommendBlog  : ==>  Preparing: select id,title from t_blog where published = true order by update_time desc limit ? 
+2020-02-28 20:49:32.340 DEBUG 486140 --- [http-nio-80-exec-1] c.e.m.BlogMapper.getNewestRecommendBlog  : ==> Parameters: 8(Integer)
+2020-02-28 20:49:32.356 DEBUG 486140 --- [http-nio-80-exec-1] c.e.m.BlogMapper.getNewestRecommendBlog  : <==      Total: 7
+2020-02-28 20:49:32.387 DEBUG 486140 --- [http-nio-80-exec-1] c.e.m.BlogMapper.getListIndexBlog_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b LEFT JOIN t_blog_tags bt ON b.id = bt.blogs_id LEFT JOIN t_tag tag ON bt.tags_id = tag.id JOIN t_type t ON b.type_id = t.id JOIN t_user u ON b.user_id = u.id WHERE b.published = true 
+2020-02-28 20:49:32.387 DEBUG 486140 --- [http-nio-80-exec-1] c.e.m.BlogMapper.getListIndexBlog_COUNT  : ==> Parameters: 
+2020-02-28 20:49:32.387 DEBUG 486140 --- [http-nio-80-exec-1] c.e.m.BlogMapper.getListIndexBlog_COUNT  : <==      Total: 1
+2020-02-28 20:49:32.387 DEBUG 486140 --- [http-nio-80-exec-1] c.e.mapper.BlogMapper.getListIndexBlog   : ==>  Preparing: select b.id,b.title,b.description,b.first_picture, b.views,b.update_time,t.id typeId,t.name typeName,tag.id tid,tag.name tname ,u.id uid,u.nick_name,u.avatar from t_blog b left join t_blog_tags bt on b.id=bt.blogs_id left join t_tag tag on bt.tags_id=tag.id join t_type t on b.type_id=t.id join t_user u on b.user_id=u.id where b.published=true order by b.update_time desc LIMIT ? 
+2020-02-28 20:49:32.387 DEBUG 486140 --- [http-nio-80-exec-1] c.e.mapper.BlogMapper.getListIndexBlog   : ==> Parameters: 9(Integer)
+2020-02-28 20:49:32.387 DEBUG 486140 --- [http-nio-80-exec-1] c.e.mapper.BlogMapper.getListIndexBlog   : <==      Total: 8
+2020-02-28 20:49:32.403 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.BlogMapper.getBlogTotal    : ==>  Preparing: select count(id) from t_blog 
+2020-02-28 20:49:32.403 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.BlogMapper.getBlogTotal    : ==> Parameters: 
+2020-02-28 20:49:32.403 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.BlogMapper.getBlogTotal    : <==      Total: 1
+2020-02-28 20:49:32.403  INFO 486140 --- [http-nio-80-exec-1] cn.edu.aspect.LogAspect                  : Result : index
+2020-02-28 20:49:36.730  INFO 486140 --- [http-nio-80-exec-6] cn.edu.aspect.LogAspect                  : Request : {url='/footer/newblogs', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.newestBlogList', args=[{}]}
+2020-02-28 20:49:36.730 DEBUG 486140 --- [http-nio-80-exec-6] cn.edu.mapper.BlogMapper.getNewestBlog   : ==>  Preparing: select id,title from t_blog where published=true order by update_time desc limit ?; 
+2020-02-28 20:49:36.730 DEBUG 486140 --- [http-nio-80-exec-6] cn.edu.mapper.BlogMapper.getNewestBlog   : ==> Parameters: 3(Integer)
+2020-02-28 20:49:36.730 DEBUG 486140 --- [http-nio-80-exec-6] cn.edu.mapper.BlogMapper.getNewestBlog   : <==      Total: 3
+2020-02-28 20:49:36.730  INFO 486140 --- [http-nio-80-exec-6] cn.edu.aspect.LogAspect                  : Result : _fragments :: newestBlogList
+2020-02-28 20:49:39.432  INFO 486140 --- [http-nio-80-exec-5] cn.edu.aspect.LogAspect                  : Request : {url='/blog/7f4fed9e-5227-4193-99a8-6af0ee886a71', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.blog', args=[7f4fed9e-5227-4193-99a8-6af0ee886a71, {}]}
+2020-02-28 20:49:39.432 DEBUG 486140 --- [http-nio-80-exec-5] cn.edu.mapper.BlogMapper.getDetailBlog   : ==>  Preparing: select b.id,b.title,b.description,b.content,b.first_picture,b.flag, b.views,b.appreciation,b.share_statement,b.commentabled, b.update_time,type.id typeId,type.name typeName,tag.id tid,tag.name tname,u.id uid,u.nick_name,u.avatar from t_blog b left join t_blog_tags bt on b.id=bt.blogs_id left join t_tag tag on bt.tags_id=tag.id join t_type type on b.type_id=type.id join t_user u on b.user_id = u.id where b.published=true and b.id=? 
+2020-02-28 20:49:39.432 DEBUG 486140 --- [http-nio-80-exec-5] cn.edu.mapper.BlogMapper.getDetailBlog   : ==> Parameters: 7f4fed9e-5227-4193-99a8-6af0ee886a71(String)
+2020-02-28 20:49:39.589 DEBUG 486140 --- [http-nio-80-exec-5] cn.edu.mapper.BlogMapper.getDetailBlog   : <==      Total: 1
+2020-02-28 20:49:39.635 DEBUG 486140 --- [http-nio-80-exec-5] cn.edu.mapper.BlogMapper.updateViews     : ==>  Preparing: update t_blog set views=views+1 where id=? 
+2020-02-28 20:49:39.635 DEBUG 486140 --- [http-nio-80-exec-5] cn.edu.mapper.BlogMapper.updateViews     : ==> Parameters: 7f4fed9e-5227-4193-99a8-6af0ee886a71(String)
+2020-02-28 20:49:39.792 DEBUG 486140 --- [http-nio-80-exec-5] cn.edu.mapper.BlogMapper.updateViews     : <==    Updates: 1
+2020-02-28 20:49:39.854  INFO 486140 --- [http-nio-80-exec-5] cn.edu.aspect.LogAspect                  : Result : blog
+2020-02-28 20:49:40.198  INFO 486140 --- [http-nio-80-exec-8] cn.edu.aspect.LogAspect                  : Request : {url='/footer/newblogs', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.newestBlogList', args=[{}]}
+2020-02-28 20:49:40.198 DEBUG 486140 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getNewestBlog   : ==>  Preparing: select id,title from t_blog where published=true order by update_time desc limit ?; 
+2020-02-28 20:49:40.198 DEBUG 486140 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getNewestBlog   : ==> Parameters: 3(Integer)
+2020-02-28 20:49:40.198 DEBUG 486140 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getNewestBlog   : <==      Total: 3
+2020-02-28 20:49:40.198  INFO 486140 --- [http-nio-80-exec-8] cn.edu.aspect.LogAspect                  : Result : _fragments :: newestBlogList
+2020-02-28 20:49:40.333  INFO 486140 --- [http-nio-80-exec-1] cn.edu.aspect.LogAspect                  : Request : {url='/comments/7f4fed9e-5227-4193-99a8-6af0ee886a71', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.CommentController.comments', args=[7f4fed9e-5227-4193-99a8-6af0ee886a71, {}]}
+2020-02-28 20:49:40.341 DEBUG 486140 --- [http-nio-80-exec-1] c.edu.mapper.CommentMapper.findByBlogId  : ==>  Preparing: select id,avatar,content,isower,create_time,email,nick_name,blog_id,pid from t_comment where blog_id=? and pid=id order by create_time 
+2020-02-28 20:49:40.341 DEBUG 486140 --- [http-nio-80-exec-1] c.edu.mapper.CommentMapper.findByBlogId  : ==> Parameters: 7f4fed9e-5227-4193-99a8-6af0ee886a71(String)
+2020-02-28 20:49:40.369 DEBUG 486140 --- [http-nio-80-exec-1] c.edu.mapper.CommentMapper.findByBlogId  : <==      Total: 4
+2020-02-28 20:49:40.369 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==>  Preparing: select id,avatar,isower,content,create_time,email,nick_name,blog_id,pid from t_comment where id!=pid and pid=? 
+2020-02-28 20:49:40.373 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==> Parameters: 21(Long)
+2020-02-28 20:49:40.385 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : <==      Total: 0
+2020-02-28 20:49:40.385 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==>  Preparing: select id,avatar,isower,content,create_time,email,nick_name,blog_id,pid from t_comment where id!=pid and pid=? 
+2020-02-28 20:49:40.385 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==> Parameters: 22(Long)
+2020-02-28 20:49:40.389 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : <==      Total: 1
+2020-02-28 20:49:40.389 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==>  Preparing: select id,avatar,isower,content,create_time,email,nick_name,blog_id,pid from t_comment where id!=pid and pid=? 
+2020-02-28 20:49:40.389 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==> Parameters: 23(Long)
+2020-02-28 20:49:40.389 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : <==      Total: 0
+2020-02-28 20:49:40.389 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==>  Preparing: select id,avatar,isower,content,create_time,email,nick_name,blog_id,pid from t_comment where id!=pid and pid=? 
+2020-02-28 20:49:40.389 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==> Parameters: 26(Long)
+2020-02-28 20:49:40.393 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : <==      Total: 0
+2020-02-28 20:49:40.393 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==>  Preparing: select id,avatar,isower,content,create_time,email,nick_name,blog_id,pid from t_comment where id!=pid and pid=? 
+2020-02-28 20:49:40.393 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : ==> Parameters: 27(Long)
+2020-02-28 20:49:40.393 DEBUG 486140 --- [http-nio-80-exec-1] cn.edu.mapper.CommentMapper.findByPid    : <==      Total: 0
+2020-02-28 20:49:40.397  INFO 486140 --- [http-nio-80-exec-1] cn.edu.aspect.LogAspect                  : Result : blog :: commentList
+2020-02-28 20:53:35.241  INFO 486140 --- [http-nio-80-exec-7] cn.edu.aspect.LogAspect                  : Request : {url='/archives', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.archives', args=[{}]}
+2020-02-28 20:53:35.241 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getGroupYear    : ==>  Preparing: select date_format(b.update_time,'%Y') year from t_blog b group by year order by year desc; 
+2020-02-28 20:53:35.241 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getGroupYear    : ==> Parameters: 
+2020-02-28 20:53:35.319 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getGroupYear    : <==      Total: 3
+2020-02-28 20:53:35.319 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogByYear   : ==>  Preparing: select b.id,b.title,b.update_time,b.flag from t_blog b where date_format(b.update_time,'%Y')=? order by b.update_time 
+2020-02-28 20:53:35.319 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogByYear   : ==> Parameters: 2020(String)
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogByYear   : <==      Total: 3
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogByYear   : ==>  Preparing: select b.id,b.title,b.update_time,b.flag from t_blog b where date_format(b.update_time,'%Y')=? order by b.update_time 
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogByYear   : ==> Parameters: 2019(String)
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogByYear   : <==      Total: 2
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogByYear   : ==>  Preparing: select b.id,b.title,b.update_time,b.flag from t_blog b where date_format(b.update_time,'%Y')=? order by b.update_time 
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogByYear   : ==> Parameters: 2018(String)
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogByYear   : <==      Total: 2
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogTotal    : ==>  Preparing: select count(id) from t_blog 
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogTotal    : ==> Parameters: 
+2020-02-28 20:53:35.335 DEBUG 486140 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.getBlogTotal    : <==      Total: 1
+2020-02-28 20:53:35.335  INFO 486140 --- [http-nio-80-exec-7] cn.edu.aspect.LogAspect                  : Result : archives
+2020-02-28 20:53:35.725  INFO 486140 --- [http-nio-80-exec-3] cn.edu.aspect.LogAspect                  : Request : {url='/footer/newblogs', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.newestBlogList', args=[{}]}
+2020-02-28 20:53:35.725 DEBUG 486140 --- [http-nio-80-exec-3] cn.edu.mapper.BlogMapper.getNewestBlog   : ==>  Preparing: select id,title from t_blog where published=true order by update_time desc limit ?; 
+2020-02-28 20:53:35.725 DEBUG 486140 --- [http-nio-80-exec-3] cn.edu.mapper.BlogMapper.getNewestBlog   : ==> Parameters: 3(Integer)
+2020-02-28 20:53:35.725 DEBUG 486140 --- [http-nio-80-exec-3] cn.edu.mapper.BlogMapper.getNewestBlog   : <==      Total: 3
+2020-02-28 20:53:35.725  INFO 486140 --- [http-nio-80-exec-3] cn.edu.aspect.LogAspect                  : Result : _fragments :: newestBlogList
+2020-02-28 20:53:37.600  INFO 486140 --- [http-nio-80-exec-8] cn.edu.aspect.LogAspect                  : Request : {url='/blog/blog.id', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.blog', args=[blog.id, {}]}
+2020-02-28 20:53:37.600 DEBUG 486140 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getDetailBlog   : ==>  Preparing: select b.id,b.title,b.description,b.content,b.first_picture,b.flag, b.views,b.appreciation,b.share_statement,b.commentabled, b.update_time,type.id typeId,type.name typeName,tag.id tid,tag.name tname,u.id uid,u.nick_name,u.avatar from t_blog b left join t_blog_tags bt on b.id=bt.blogs_id left join t_tag tag on bt.tags_id=tag.id join t_type type on b.type_id=type.id join t_user u on b.user_id = u.id where b.published=true and b.id=? 
+2020-02-28 20:53:37.600 DEBUG 486140 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getDetailBlog   : ==> Parameters: blog.id(String)
+2020-02-28 20:53:37.600 DEBUG 486140 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getDetailBlog   : <==      Total: 0
+2020-02-28 20:53:37.647 ERROR 486140 --- [http-nio-80-exec-8] c.e.handler.ControllerExceptionHandler   : Request URL : /blog/blog.id,Exception : {}
+
+cn.edu.exception.NotFoundException: 该博客不存在
+	at cn.edu.service.impl.BlogServiceImpl.getDetailBlog(BlogServiceImpl.java:82) ~[classes/:na]
+	at cn.edu.service.impl.BlogServiceImpl$$FastClassBySpringCGLIB$$41f4db79.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:769) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366) ~[spring-tx-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99) ~[spring-tx-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:689) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at cn.edu.service.impl.BlogServiceImpl$$EnhancerBySpringCGLIB$$70d0a4c3.getDetailBlog(<generated>) ~[classes/:na]
+	at cn.edu.controller.user.IndexController.blog(IndexController.java:63) ~[classes/:na]
+	at cn.edu.controller.user.IndexController$$FastClassBySpringCGLIB$$c9426a2.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:769) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:689) ~[spring-aop-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at cn.edu.controller.user.IndexController$$EnhancerBySpringCGLIB$$8994e7a6.blog(<generated>) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_144]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_144]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_144]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_144]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) [spring-web-5.2.3.RELEASE.jar:5.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.30.jar:9.0.30]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+
+2020-02-28 20:53:37.647  WARN 486140 --- [http-nio-80-exec-8] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [cn.edu.exception.NotFoundException: 该博客不存在]
+2020-02-28 20:57:44.366  INFO 486148 --- [restartedMain] cn.edu.VcblogApplication                 : Starting VcblogApplication on LAPTOP-U98MSAIS with PID 486148 (E:\Github_project\blog\target\classes started by ewklo in E:\Github_project\blog)
+2020-02-28 20:57:44.381 DEBUG 486148 --- [restartedMain] cn.edu.VcblogApplication                 : Running with Spring Boot v2.2.3.RELEASE, Spring v5.2.3.RELEASE
+2020-02-28 20:57:44.381  INFO 486148 --- [restartedMain] cn.edu.VcblogApplication                 : No active profile set, falling back to default profiles: default
+2020-02-28 20:57:44.459  INFO 486148 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-02-28 20:57:44.459  INFO 486148 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-02-28 20:57:45.178  INFO 486148 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-28 20:57:45.194  INFO 486148 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 0 JPA repository interfaces.
+2020-02-28 20:57:45.616  INFO 486148 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-28 20:57:46.225  INFO 486148 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-02-28 20:57:46.225  INFO 486148 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-28 20:57:46.225  INFO 486148 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-28 20:57:46.365  INFO 486148 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-28 20:57:46.365  INFO 486148 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1906 ms
+2020-02-28 20:57:47.537  INFO 486148 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-28 20:57:47.678  INFO 486148 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-02-28 20:57:48.037  INFO 486148 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-02-28 20:57:48.099  INFO 486148 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-02-28 20:57:48.099  INFO 486148 --- [restartedMain] cn.edu.VcblogApplication                 : Started VcblogApplication in 4.344 seconds (JVM running for 6.505)
+2020-02-28 20:57:55.966  INFO 486148 --- [http-nio-80-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-28 20:57:55.966  INFO 486148 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-28 20:57:55.982  INFO 486148 --- [http-nio-80-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2020-02-28 20:57:55.998  INFO 486148 --- [http-nio-80-exec-2] cn.edu.aspect.LogAspect                  : Request : {url='/archives', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.archives', args=[{}]}
+2020-02-28 20:57:56.013  INFO 486148 --- [http-nio-80-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-28 20:57:56.170  INFO 486148 --- [http-nio-80-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-28 20:57:56.201 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getGroupYear    : ==>  Preparing: select date_format(b.update_time,'%Y') year from t_blog b group by year order by year desc; 
+2020-02-28 20:57:56.248 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getGroupYear    : ==> Parameters: 
+2020-02-28 20:57:56.263 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getGroupYear    : <==      Total: 3
+2020-02-28 20:57:56.279 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogByYear   : ==>  Preparing: select b.id,b.title,b.update_time,b.flag from t_blog b where date_format(b.update_time,'%Y')=? order by b.update_time 
+2020-02-28 20:57:56.279 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogByYear   : ==> Parameters: 2020(String)
+2020-02-28 20:57:56.279 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogByYear   : <==      Total: 3
+2020-02-28 20:57:56.279 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogByYear   : ==>  Preparing: select b.id,b.title,b.update_time,b.flag from t_blog b where date_format(b.update_time,'%Y')=? order by b.update_time 
+2020-02-28 20:57:56.279 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogByYear   : ==> Parameters: 2019(String)
+2020-02-28 20:57:56.279 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogByYear   : <==      Total: 2
+2020-02-28 20:57:56.279 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogByYear   : ==>  Preparing: select b.id,b.title,b.update_time,b.flag from t_blog b where date_format(b.update_time,'%Y')=? order by b.update_time 
+2020-02-28 20:57:56.279 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogByYear   : ==> Parameters: 2018(String)
+2020-02-28 20:57:56.279 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogByYear   : <==      Total: 2
+2020-02-28 20:57:56.294 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogTotal    : ==>  Preparing: select count(id) from t_blog 
+2020-02-28 20:57:56.294 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogTotal    : ==> Parameters: 
+2020-02-28 20:57:56.294 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getBlogTotal    : <==      Total: 1
+2020-02-28 20:57:56.294  INFO 486148 --- [http-nio-80-exec-2] cn.edu.aspect.LogAspect                  : Result : archives
+2020-02-28 20:57:57.151  INFO 486148 --- [http-nio-80-exec-8] cn.edu.aspect.LogAspect                  : Request : {url='/footer/newblogs', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.newestBlogList', args=[{}]}
+2020-02-28 20:57:57.151 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getNewestBlog   : ==>  Preparing: select id,title from t_blog where published=true order by update_time desc limit ?; 
+2020-02-28 20:57:57.167 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getNewestBlog   : ==> Parameters: 3(Integer)
+2020-02-28 20:57:57.167 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getNewestBlog   : <==      Total: 3
+2020-02-28 20:57:57.167  INFO 486148 --- [http-nio-80-exec-8] cn.edu.aspect.LogAspect                  : Result : _fragments :: newestBlogList
+2020-02-28 20:58:00.713  INFO 486148 --- [http-nio-80-exec-9] cn.edu.aspect.LogAspect                  : Request : {url='/blog/13e5de2f-2907-420d-bd12-b3780fd0812f', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.blog', args=[13e5de2f-2907-420d-bd12-b3780fd0812f, {}]}
+2020-02-28 20:58:07.055 DEBUG 486148 --- [http-nio-80-exec-9] cn.edu.mapper.BlogMapper.getDetailBlog   : ==>  Preparing: select b.id,b.title,b.description,b.content,b.first_picture,b.flag, b.views,b.appreciation,b.share_statement,b.commentabled, b.update_time,type.id typeId,type.name typeName,tag.id tid,tag.name tname,u.id uid,u.nick_name,u.avatar from t_blog b left join t_blog_tags bt on b.id=bt.blogs_id left join t_tag tag on bt.tags_id=tag.id join t_type type on b.type_id=type.id join t_user u on b.user_id = u.id where b.published=true and b.id=? 
+2020-02-28 20:58:07.055 DEBUG 486148 --- [http-nio-80-exec-9] cn.edu.mapper.BlogMapper.getDetailBlog   : ==> Parameters: 13e5de2f-2907-420d-bd12-b3780fd0812f(String)
+2020-02-28 20:58:07.071 DEBUG 486148 --- [http-nio-80-exec-9] cn.edu.mapper.BlogMapper.getDetailBlog   : <==      Total: 2
+2020-02-28 20:58:12.746 DEBUG 486148 --- [http-nio-80-exec-9] cn.edu.mapper.BlogMapper.updateViews     : ==>  Preparing: update t_blog set views=views+1 where id=? 
+2020-02-28 20:58:12.761 DEBUG 486148 --- [http-nio-80-exec-9] cn.edu.mapper.BlogMapper.updateViews     : ==> Parameters: 13e5de2f-2907-420d-bd12-b3780fd0812f(String)
+2020-02-28 20:58:12.761 DEBUG 486148 --- [http-nio-80-exec-9] cn.edu.mapper.BlogMapper.updateViews     : <==    Updates: 1
+2020-02-28 20:58:13.948  INFO 486148 --- [http-nio-80-exec-9] cn.edu.aspect.LogAspect                  : Result : blog
+2020-02-28 20:58:14.183  INFO 486148 --- [http-nio-80-exec-2] cn.edu.aspect.LogAspect                  : Request : {url='/footer/newblogs', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.newestBlogList', args=[{}]}
+2020-02-28 20:58:14.183 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getNewestBlog   : ==>  Preparing: select id,title from t_blog where published=true order by update_time desc limit ?; 
+2020-02-28 20:58:14.183 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getNewestBlog   : ==> Parameters: 3(Integer)
+2020-02-28 20:58:14.183 DEBUG 486148 --- [http-nio-80-exec-2] cn.edu.mapper.BlogMapper.getNewestBlog   : <==      Total: 3
+2020-02-28 20:58:14.183  INFO 486148 --- [http-nio-80-exec-2] cn.edu.aspect.LogAspect                  : Result : _fragments :: newestBlogList
+2020-02-28 20:58:14.309  INFO 486148 --- [http-nio-80-exec-1] cn.edu.aspect.LogAspect                  : Request : {url='/comments/13e5de2f-2907-420d-bd12-b3780fd0812f', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.CommentController.comments', args=[13e5de2f-2907-420d-bd12-b3780fd0812f, {}]}
+2020-02-28 20:58:14.329 DEBUG 486148 --- [http-nio-80-exec-1] c.edu.mapper.CommentMapper.findByBlogId  : ==>  Preparing: select id,avatar,content,isower,create_time,email,nick_name,blog_id,pid from t_comment where blog_id=? and pid=id order by create_time 
+2020-02-28 20:58:14.329 DEBUG 486148 --- [http-nio-80-exec-1] c.edu.mapper.CommentMapper.findByBlogId  : ==> Parameters: 13e5de2f-2907-420d-bd12-b3780fd0812f(String)
+2020-02-28 20:58:14.349 DEBUG 486148 --- [http-nio-80-exec-1] c.edu.mapper.CommentMapper.findByBlogId  : <==      Total: 0
+2020-02-28 20:58:14.353  INFO 486148 --- [http-nio-80-exec-1] cn.edu.aspect.LogAspect                  : Result : blog :: commentList
+2020-02-28 21:06:42.278  INFO 486148 --- [http-nio-80-exec-5] cn.edu.aspect.LogAspect                  : Request : {url='/', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.index', args=[1, {}]}
+2020-02-28 21:06:42.324 DEBUG 486148 --- [http-nio-80-exec-5] cn.edu.mapper.TypeMapper.getTopType      : ==>  Preparing: select t.*,b.id bid,b.title,count(t.id) tsize from t_blog b join t_type t on b.type_id=t.id where b.published=true group by(t.id) order by count(t.id) desc limit ? 
+2020-02-28 21:06:42.324 DEBUG 486148 --- [http-nio-80-exec-5] cn.edu.mapper.TypeMapper.getTopType      : ==> Parameters: 10(Integer)
+2020-02-28 21:06:42.324 DEBUG 486148 --- [http-nio-80-exec-5] cn.edu.mapper.TypeMapper.getTopType      : <==      Total: 6
+2020-02-28 21:06:42.340 DEBUG 486148 --- [http-nio-80-exec-5] cn.edu.mapper.TagMapper.getTopTag        : ==>  Preparing: select t.*,b.id bid,b.title from t_blog_tags bt join t_tag t on bt.tags_id=t.id join t_blog b on bt.blogs_id=b.id where b.published=true order by b.update_time desc limit ? 
+2020-02-28 21:06:42.340 DEBUG 486148 --- [http-nio-80-exec-5] cn.edu.mapper.TagMapper.getTopTag        : ==> Parameters: 10(Integer)
+2020-02-28 21:06:42.340 DEBUG 486148 --- [http-nio-80-exec-5] cn.edu.mapper.TagMapper.getTopTag        : <==      Total: 5
+2020-02-28 21:06:42.340 DEBUG 486148 --- [http-nio-80-exec-5] c.e.m.BlogMapper.getNewestRecommendBlog  : ==>  Preparing: select id,title from t_blog where published = true order by update_time desc limit ? 
+2020-02-28 21:06:42.340 DEBUG 486148 --- [http-nio-80-exec-5] c.e.m.BlogMapper.getNewestRecommendBlog  : ==> Parameters: 8(Integer)
+2020-02-28 21:06:42.340 DEBUG 486148 --- [http-nio-80-exec-5] c.e.m.BlogMapper.getNewestRecommendBlog  : <==      Total: 7
+2020-02-28 21:06:42.371 DEBUG 486148 --- [http-nio-80-exec-5] c.e.m.BlogMapper.getListIndexBlog_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b LEFT JOIN t_blog_tags bt ON b.id = bt.blogs_id LEFT JOIN t_tag tag ON bt.tags_id = tag.id JOIN t_type t ON b.type_id = t.id JOIN t_user u ON b.user_id = u.id WHERE b.published = true 
+2020-02-28 21:06:42.371 DEBUG 486148 --- [http-nio-80-exec-5] c.e.m.BlogMapper.getListIndexBlog_COUNT  : ==> Parameters: 
+2020-02-28 21:06:42.387 DEBUG 486148 --- [http-nio-80-exec-5] c.e.m.BlogMapper.getListIndexBlog_COUNT  : <==      Total: 1
+2020-02-28 21:06:42.387 DEBUG 486148 --- [http-nio-80-exec-5] c.e.mapper.BlogMapper.getListIndexBlog   : ==>  Preparing: select b.id,b.title,b.description,b.first_picture, b.views,b.update_time,t.id typeId,t.name typeName,tag.id tid,tag.name tname ,u.id uid,u.nick_name,u.avatar from t_blog b left join t_blog_tags bt on b.id=bt.blogs_id left join t_tag tag on bt.tags_id=tag.id join t_type t on b.type_id=t.id join t_user u on b.user_id=u.id where b.published=true order by b.update_time desc LIMIT ? 
+2020-02-28 21:06:42.387 DEBUG 486148 --- [http-nio-80-exec-5] c.e.mapper.BlogMapper.getListIndexBlog   : ==> Parameters: 9(Integer)
+2020-02-28 21:06:42.387 DEBUG 486148 --- [http-nio-80-exec-5] c.e.mapper.BlogMapper.getListIndexBlog   : <==      Total: 8
+2020-02-28 21:06:42.387 DEBUG 486148 --- [http-nio-80-exec-5] cn.edu.mapper.BlogMapper.getBlogTotal    : ==>  Preparing: select count(id) from t_blog 
+2020-02-28 21:06:42.387 DEBUG 486148 --- [http-nio-80-exec-5] cn.edu.mapper.BlogMapper.getBlogTotal    : ==> Parameters: 
+2020-02-28 21:06:42.387 DEBUG 486148 --- [http-nio-80-exec-5] cn.edu.mapper.BlogMapper.getBlogTotal    : <==      Total: 1
+2020-02-28 21:06:42.387  INFO 486148 --- [http-nio-80-exec-5] cn.edu.aspect.LogAspect                  : Result : index
+2020-02-28 21:06:42.637  INFO 486148 --- [http-nio-80-exec-6] cn.edu.aspect.LogAspect                  : Request : {url='/footer/newblogs', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.user.IndexController.newestBlogList', args=[{}]}
+2020-02-28 21:06:42.652 DEBUG 486148 --- [http-nio-80-exec-6] cn.edu.mapper.BlogMapper.getNewestBlog   : ==>  Preparing: select id,title from t_blog where published=true order by update_time desc limit ?; 
+2020-02-28 21:06:42.652 DEBUG 486148 --- [http-nio-80-exec-6] cn.edu.mapper.BlogMapper.getNewestBlog   : ==> Parameters: 3(Integer)
+2020-02-28 21:06:42.652 DEBUG 486148 --- [http-nio-80-exec-6] cn.edu.mapper.BlogMapper.getNewestBlog   : <==      Total: 3
+2020-02-28 21:06:42.668  INFO 486148 --- [http-nio-80-exec-6] cn.edu.aspect.LogAspect                  : Result : _fragments :: newestBlogList
+2020-02-28 21:07:02.304  INFO 486148 --- [http-nio-80-exec-4] cn.edu.aspect.LogAspect                  : Request : {url='/admin', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.admin.UserController.loginPage', args=[org.apache.catalina.session.StandardSessionFacade@125aede]}
+2020-02-28 21:07:02.304  INFO 486148 --- [http-nio-80-exec-4] cn.edu.aspect.LogAspect                  : Result : admin/login
+2020-02-28 21:07:12.130  INFO 486148 --- [http-nio-80-exec-10] cn.edu.aspect.LogAspect                  : Request : {url='/admin/login;jsessionid=49E9EC6E41E886D3A0428F7AF4824DF4', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.admin.UserController.login', args=[root, 123456, org.apache.catalina.session.StandardSessionFacade@125aede, {}]}
+2020-02-28 21:07:12.161 DEBUG 486148 --- [http-nio-80-exec-10] c.e.m.U.findByUsernameAndPassword        : ==>  Preparing: select * from t_user where username=? and password=? 
+2020-02-28 21:07:12.161 DEBUG 486148 --- [http-nio-80-exec-10] c.e.m.U.findByUsernameAndPassword        : ==> Parameters: root(String), e10adc3949ba59abbe56e057f20f883e(String)
+2020-02-28 21:07:12.192 DEBUG 486148 --- [http-nio-80-exec-10] c.e.m.U.findByUsernameAndPassword        : <==      Total: 1
+2020-02-28 21:07:12.192  INFO 486148 --- [http-nio-80-exec-10] cn.edu.aspect.LogAspect                  : Result : redirect:/admin/blogs
+2020-02-28 21:07:12.224  INFO 486148 --- [http-nio-80-exec-7] cn.edu.aspect.LogAspect                  : Request : {url='/admin/blogs', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.admin.BlogController.listblog', args=[1, {}]}
+2020-02-28 21:07:12.224 DEBUG 486148 --- [http-nio-80-exec-7] c.edu.mapper.BlogMapper.listQuery_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b LEFT JOIN t_type t ON b.type_id = t.id 
+2020-02-28 21:07:12.224 DEBUG 486148 --- [http-nio-80-exec-7] c.edu.mapper.BlogMapper.listQuery_COUNT  : ==> Parameters: 
+2020-02-28 21:07:12.224 DEBUG 486148 --- [http-nio-80-exec-7] c.edu.mapper.BlogMapper.listQuery_COUNT  : <==      Total: 1
+2020-02-28 21:07:12.224 DEBUG 486148 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.listQuery       : ==>  Preparing: select b.id,b.title,b.update_time,b.published,b.recommend,b.type_id,t.id tid,t.name tname from t_blog b left join t_type t on b.type_id = t.id order by b.create_time desc LIMIT ? 
+2020-02-28 21:07:12.224 DEBUG 486148 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.listQuery       : ==> Parameters: 9(Integer)
+2020-02-28 21:07:12.224 DEBUG 486148 --- [http-nio-80-exec-7] cn.edu.mapper.BlogMapper.listQuery       : <==      Total: 7
+2020-02-28 21:07:12.224 DEBUG 486148 --- [http-nio-80-exec-7] cn.edu.mapper.TypeMapper.list            : ==>  Preparing: select * from t_type 
+2020-02-28 21:07:12.224 DEBUG 486148 --- [http-nio-80-exec-7] cn.edu.mapper.TypeMapper.list            : ==> Parameters: 
+2020-02-28 21:07:12.224 DEBUG 486148 --- [http-nio-80-exec-7] cn.edu.mapper.TypeMapper.list            : <==      Total: 13
+2020-02-28 21:07:12.239  INFO 486148 --- [http-nio-80-exec-7] cn.edu.aspect.LogAspect                  : Result : admin/blogs
+2020-02-28 21:07:14.473  INFO 486148 --- [http-nio-80-exec-6] cn.edu.aspect.LogAspect                  : Request : {url='/admin/blogs/input', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.admin.BlogController.blogInputPage', args=[{}, org.apache.catalina.session.StandardSessionFacade@125aede]}
+2020-02-28 21:07:14.504 DEBUG 486148 --- [http-nio-80-exec-6] c.e.m.BlogMapper.getUnPublishedBlog      : ==>  Preparing: select * from t_blog where user_id=? and published=false 
+2020-02-28 21:07:14.504 DEBUG 486148 --- [http-nio-80-exec-6] c.e.m.BlogMapper.getUnPublishedBlog      : ==> Parameters: 1(String)
+2020-02-28 21:07:14.504 DEBUG 486148 --- [http-nio-80-exec-6] c.e.m.BlogMapper.getUnPublishedBlog      : <==      Total: 0
+2020-02-28 21:07:14.504 DEBUG 486148 --- [http-nio-80-exec-6] cn.edu.mapper.TypeMapper.list            : ==>  Preparing: select * from t_type 
+2020-02-28 21:07:14.504 DEBUG 486148 --- [http-nio-80-exec-6] cn.edu.mapper.TypeMapper.list            : ==> Parameters: 
+2020-02-28 21:07:14.504 DEBUG 486148 --- [http-nio-80-exec-6] cn.edu.mapper.TypeMapper.list            : <==      Total: 13
+2020-02-28 21:07:14.504 DEBUG 486148 --- [http-nio-80-exec-6] cn.edu.mapper.TagMapper.list             : ==>  Preparing: select * from t_tag 
+2020-02-28 21:07:14.520 DEBUG 486148 --- [http-nio-80-exec-6] cn.edu.mapper.TagMapper.list             : ==> Parameters: 
+2020-02-28 21:07:14.520 DEBUG 486148 --- [http-nio-80-exec-6] cn.edu.mapper.TagMapper.list             : <==      Total: 12
+2020-02-28 21:07:14.520  INFO 486148 --- [http-nio-80-exec-6] cn.edu.aspect.LogAspect                  : Result : admin/blogs_input
+2020-02-28 21:07:33.919  WARN 486148 --- [http-nio-80-exec-10] javax.persistence.spi                    : javax.persistence.spi::No valid providers found.
+2020-02-28 21:07:33.934  INFO 486148 --- [http-nio-80-exec-10] cn.edu.aspect.LogAspect                  : Request : {url='/admin/blogs', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.admin.BlogController.post', args=[Blog{id='', title='上单法师', description='撒打发斯蒂芬撒', content='阿斯顿发送到', firstPicture='撒旦飞洒大', flag='', views=0, appreciation=true, shareStatement=true, commentabled=true, published=true, recommend=true, createTime=null, updateTime=null, userId='null', typeId=4, tagIds='20,28', type=null, tags=[], user=null, comments=[]}, org.springframework.validation.BeanPropertyBindingResult: 0 errors, {}, org.apache.catalina.session.StandardSessionFacade@125aede]}
+2020-02-28 21:07:33.934 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.TypeMapper.findById        : ==>  Preparing: select * from t_type where id = ? 
+2020-02-28 21:07:33.934 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.TypeMapper.findById        : ==> Parameters: 4(Long)
+2020-02-28 21:07:33.934 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.TypeMapper.findById        : <==      Total: 1
+2020-02-28 21:07:33.934 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.TagMapper.findById         : ==>  Preparing: select * from t_tag where id = ? 
+2020-02-28 21:07:33.950 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.TagMapper.findById         : ==> Parameters: 20(Long)
+2020-02-28 21:07:33.950 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.TagMapper.findById         : <==      Total: 1
+2020-02-28 21:07:33.950 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.TagMapper.findById         : ==>  Preparing: select * from t_tag where id = ? 
+2020-02-28 21:07:33.950 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.TagMapper.findById         : ==> Parameters: 28(Long)
+2020-02-28 21:07:33.950 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.TagMapper.findById         : <==      Total: 1
+2020-02-28 21:07:33.950 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.BlogMapper.save            : ==>  Preparing: insert into t_blog (id,title, description, content, first_picture, flag,views, appreciation, share_statement, commentabled,published,recommend, create_time, update_time, tagIds ,type_id, user_id) values (?,?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); 
+2020-02-28 21:07:33.966 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.BlogMapper.save            : ==> Parameters: bd4ea40b-2e84-4071-b58f-1793c3ed4f83(String), 上单法师(String), 撒打发斯蒂芬撒(String), 阿斯顿发送到(String), 撒旦飞洒大(String), (String), 0(Integer), true(Boolean), true(Boolean), true(Boolean), true(Boolean), true(Boolean), 2020-02-28 21:07:33.95(Timestamp), 2020-02-28 21:07:33.95(Timestamp), 20,28(String), 4(Long), 1(String)
+2020-02-28 21:07:34.044 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.BlogMapper.save            : <==    Updates: 1
+2020-02-28 21:07:34.044 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.BlogAndTagMapper.save      : ==>  Preparing: insert into t_blog_tags(blogs_id, tags_id) values (?,?); 
+2020-02-28 21:07:34.044 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.BlogAndTagMapper.save      : ==> Parameters: bd4ea40b-2e84-4071-b58f-1793c3ed4f83(String), 20(Long)
+2020-02-28 21:07:34.059 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.BlogAndTagMapper.save      : <==    Updates: 1
+2020-02-28 21:07:34.059 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.BlogAndTagMapper.save      : ==>  Preparing: insert into t_blog_tags(blogs_id, tags_id) values (?,?); 
+2020-02-28 21:07:34.059 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.BlogAndTagMapper.save      : ==> Parameters: bd4ea40b-2e84-4071-b58f-1793c3ed4f83(String), 28(Long)
+2020-02-28 21:07:34.059 DEBUG 486148 --- [http-nio-80-exec-10] cn.edu.mapper.BlogAndTagMapper.save      : <==    Updates: 1
+2020-02-28 21:07:34.106  INFO 486148 --- [http-nio-80-exec-10] cn.edu.aspect.LogAspect                  : Result : redirect:/admin/blogs
+2020-02-28 21:07:34.122  INFO 486148 --- [http-nio-80-exec-3] cn.edu.aspect.LogAspect                  : Request : {url='/admin/blogs', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.admin.BlogController.listblog', args=[1, {message=博客发布成功}]}
+2020-02-28 21:07:34.122 DEBUG 486148 --- [http-nio-80-exec-3] c.edu.mapper.BlogMapper.listQuery_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b LEFT JOIN t_type t ON b.type_id = t.id 
+2020-02-28 21:07:34.122 DEBUG 486148 --- [http-nio-80-exec-3] c.edu.mapper.BlogMapper.listQuery_COUNT  : ==> Parameters: 
+2020-02-28 21:07:34.122 DEBUG 486148 --- [http-nio-80-exec-3] c.edu.mapper.BlogMapper.listQuery_COUNT  : <==      Total: 1
+2020-02-28 21:07:34.122 DEBUG 486148 --- [http-nio-80-exec-3] cn.edu.mapper.BlogMapper.listQuery       : ==>  Preparing: select b.id,b.title,b.update_time,b.published,b.recommend,b.type_id,t.id tid,t.name tname from t_blog b left join t_type t on b.type_id = t.id order by b.create_time desc LIMIT ? 
+2020-02-28 21:07:34.122 DEBUG 486148 --- [http-nio-80-exec-3] cn.edu.mapper.BlogMapper.listQuery       : ==> Parameters: 9(Integer)
+2020-02-28 21:07:34.137 DEBUG 486148 --- [http-nio-80-exec-3] cn.edu.mapper.BlogMapper.listQuery       : <==      Total: 8
+2020-02-28 21:07:34.137 DEBUG 486148 --- [http-nio-80-exec-3] cn.edu.mapper.TypeMapper.list            : ==>  Preparing: select * from t_type 
+2020-02-28 21:07:34.137 DEBUG 486148 --- [http-nio-80-exec-3] cn.edu.mapper.TypeMapper.list            : ==> Parameters: 
+2020-02-28 21:07:34.137 DEBUG 486148 --- [http-nio-80-exec-3] cn.edu.mapper.TypeMapper.list            : <==      Total: 13
+2020-02-28 21:07:34.137  INFO 486148 --- [http-nio-80-exec-3] cn.edu.aspect.LogAspect                  : Result : admin/blogs
+2020-02-28 21:07:36.762  INFO 486148 --- [http-nio-80-exec-8] cn.edu.aspect.LogAspect                  : Request : {url='/admin/blogs/bd4ea40b-2e84-4071-b58f-1793c3ed4f83/check', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.admin.BlogController.blogCheckPage', args=[bd4ea40b-2e84-4071-b58f-1793c3ed4f83, {}]}
+2020-02-28 21:07:36.762 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getDetailBlog   : ==>  Preparing: select b.id,b.title,b.description,b.content,b.first_picture,b.flag, b.views,b.appreciation,b.share_statement,b.commentabled, b.update_time,type.id typeId,type.name typeName,tag.id tid,tag.name tname,u.id uid,u.nick_name,u.avatar from t_blog b left join t_blog_tags bt on b.id=bt.blogs_id left join t_tag tag on bt.tags_id=tag.id join t_type type on b.type_id=type.id join t_user u on b.user_id = u.id where b.published=true and b.id=? 
+2020-02-28 21:07:36.762 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getDetailBlog   : ==> Parameters: bd4ea40b-2e84-4071-b58f-1793c3ed4f83(String)
+2020-02-28 21:07:36.762 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.BlogMapper.getDetailBlog   : <==      Total: 2
+2020-02-28 21:07:36.777 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.TypeMapper.list            : ==>  Preparing: select * from t_type 
+2020-02-28 21:07:36.777 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.TypeMapper.list            : ==> Parameters: 
+2020-02-28 21:07:36.777 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.TypeMapper.list            : <==      Total: 13
+2020-02-28 21:07:36.777 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.TagMapper.list             : ==>  Preparing: select * from t_tag 
+2020-02-28 21:07:36.777 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.TagMapper.list             : ==> Parameters: 
+2020-02-28 21:07:36.777 DEBUG 486148 --- [http-nio-80-exec-8] cn.edu.mapper.TagMapper.list             : <==      Total: 12
+2020-02-28 21:07:36.777  INFO 486148 --- [http-nio-80-exec-8] cn.edu.aspect.LogAspect                  : Result : admin/blog
+2020-02-28 21:07:37.328  INFO 486148 --- [http-nio-80-exec-2] cn.edu.aspect.LogAspect                  : Request : {url='/admin/comments/bd4ea40b-2e84-4071-b58f-1793c3ed4f83', ip='0:0:0:0:0:0:0:1', classMethod='cn.edu.controller.admin.AdminCommentController.comments', args=[bd4ea40b-2e84-4071-b58f-1793c3ed4f83, {}]}
+2020-02-28 21:07:37.359 DEBUG 486148 --- [http-nio-80-exec-2] c.edu.mapper.CommentMapper.findByBlogId  : ==>  Preparing: select id,avatar,content,isower,create_time,email,nick_name,blog_id,pid from t_comment where blog_id=? and pid=id order by create_time 
+2020-02-28 21:07:37.359 DEBUG 486148 --- [http-nio-80-exec-2] c.edu.mapper.CommentMapper.findByBlogId  : ==> Parameters: bd4ea40b-2e84-4071-b58f-1793c3ed4f83(String)
+2020-02-28 21:07:37.359 DEBUG 486148 --- [http-nio-80-exec-2] c.edu.mapper.CommentMapper.findByBlogId  : <==      Total: 0
+2020-02-28 21:07:37.359  INFO 486148 --- [http-nio-80-exec-2] cn.edu.aspect.LogAspect                  : Result : admin/blog :: commentList
+2020-02-28 21:14:15.979  INFO 486148 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-28 21:14:15.994  INFO 486148 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-02-28 21:14:16.010  INFO 486148 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
