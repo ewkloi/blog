@@ -68,7 +68,7 @@
           <span th:text="${item.value.size()}"></span>条)
         </h3>
         <div class="ui fluid vertical menu">
-          <a href="#" th:href="@{/blog/{id}(id=blog.id)}" target="_blank" class="item"
+          <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item"
              th:each="blog:${item.value}">
 						<span>
 							<i class="mini teal circle icon"></i>

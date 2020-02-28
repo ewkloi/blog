@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/user")
 public class UserLoginController {
+
   @Value("${default.avatar}")
   private String avatar;
   @Autowired

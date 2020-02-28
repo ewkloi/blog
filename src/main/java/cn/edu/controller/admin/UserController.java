@@ -65,7 +65,7 @@ public class UserController {
       Model model) {
     PageInfo<User> pageInfo = userService.list(pageNum, pageSize);
     model.addAttribute("page", pageInfo);
-    return "/admin/users";
+    return "admin/users";
   }
 
   @GetMapping("/users/{id}/delete")
