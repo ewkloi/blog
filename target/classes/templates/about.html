@@ -54,9 +54,9 @@
         </div>
         <div class="ui attached segment">
           <p class="m-text">自我介绍</p>
-          <p class="m-text">陈永昌，男，1997年10月生，目前就读于广东技术师范大学，将于2020年6月份毕业。大学四年，虽不谈精彩，但也使我
-            对过去和未来有了自己的思考，思想更加成熟，学会解决各种问题，同时也结识了很多良师益友。闲暇之余，我喜欢去学习各种编程相关的技术，
-            为将来的就业做好准备。这个博客是用于纪录平时编程和开发过程中遇到的各种问题以及思考，喜欢的朋友记得多来看看哦...
+          <p class="m-text">陈永昌，男，1997年10月生，2016年就读于广东技术师范大学。大学四年，虽不谈精彩，但也使我
+            对过去和未来有了自己的思考，思想更加成熟，学会解决各种问题，同时也结识了很多良师益友。闲暇之余，我喜欢去学习各种编程相关的技术
+            ，这个博客是用于纪录平时编程和开发过程中遇到的各种问题以及思考，喜欢的朋友记得多来看看哦...
           </p>
         </div>
         <div class="ui attached segment">
@@ -71,10 +71,11 @@
           <div class="ui teal basic left pointing label m-margin-tb-tiny">MySql</div>
         </div>
         <div class="ui bottom attached segment">
-          <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
+          <a th:href="#{index.githubhref}" target="_blank" class="ui  circular icon button"><i class="github icon"></i></a>
           <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
           <a href="#" class="ui qq circular icon button" ><i class="qq icon"></i></a>
         </div>
+
         <div class="ui wechat-qr flowing popup transition hidden">
           <img src="../static/images/wechat.jpg" th:src="#{index.wechatpic}"
                class="ui rounded image" style="width: 120px"/>
@@ -148,6 +149,7 @@
   </script>
 </th:block>
 <script>
+
   $('.wechat').popup({
     popup: $('.wechat-qr'),
     on: 'hover',
