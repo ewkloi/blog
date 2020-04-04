@@ -49,6 +49,7 @@ comment:
 #注册用户默认头像
 default:
   avatar: /images/default.jpg
+  dir: /blog/images
 #以下是自定义的全局属性，在Controller中可以通过@Value("index.xxx")注入到相应的属性中
 #首页自定义相关配置
 index:
