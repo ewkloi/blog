@@ -198,7 +198,18 @@
       width: "100%",
       height: 640,
       syncScrolling: "single",
-      path: "/lib/editormd/lib/"
+      path: "/lib/editormd/lib/",
+      emoji : true,
+      taskList : true,
+      tocm : true,         // Using [TOCM]
+      tex : true,                   // 开启科学公式TeX语言支持，默认关闭
+      flowChart : true,             // 开启流程图支持，默认关闭
+      sequenceDiagram : true,
+      imageUpload : true,
+      imageFormats : [ "jpg", "jpeg", "gif", "png", "bmp"],
+      imageUploadURL : "[[@{/admin/file/upload}]]", //注意你后端的上传图片服务地址
+      // path: "../../static/lib/editormd/lib/"
+      //thymeleaf（static目录下）：/lib/editormd/lib/
       // path: "../../static/lib/editormd/lib/"
       //thymeleaf（static目录下）：/lib/editormd/lib/
     });

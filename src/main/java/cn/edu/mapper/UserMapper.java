@@ -20,7 +20,7 @@ public interface UserMapper {
   User findByName(User user);
   int save(User user);
 
-  void delete(String id);
+  int delete(String id);
 
 //  @Select("select * from t_user where username=#{username} and password=#{password}")
 //  User findByUsernameAndPassword(User user);

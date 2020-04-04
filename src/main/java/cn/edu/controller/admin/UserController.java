@@ -2,7 +2,9 @@ package cn.edu.controller.admin;
 
 import cn.edu.po.User;
 import cn.edu.service.UserService;
+import cn.edu.utils.StringUtils;
 import com.github.pagehelper.PageInfo;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -69,9 +71,9 @@ public class UserController {
   }
 
   @GetMapping("/users/{id}/delete")
-  public String delete(@PathVariable String id, RedirectAttributes attributes) {
+  public String delete(@PathVariable String id, HttpServletRequest request, RedirectAttributes attributes) {
     try {
-       userService.delete(id);
+       userService.delete(StringUtils.getItemPath(request), id);
       attributes.addFlashAttribute("message", "删除成功");
     }catch (Exception e){
       attributes.addFlashAttribute("message", "删除失败");

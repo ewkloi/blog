@@ -6,6 +6,7 @@ import cn.edu.po.User;
 import cn.edu.service.BlogService;
 import cn.edu.service.TagService;
 import cn.edu.service.TypeService;
+import cn.edu.utils.StringUtils;
 import cn.edu.vo.BlogSearch;
 import cn.edu.vo.IndexBlog;
 import cn.edu.vo.PageRequest;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.Attributes;
 import java.util.stream.Collectors;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -164,8 +166,9 @@ public class BlogController {
 
   //删除博客
   @GetMapping("/blogs/{id}/delete")
-  public String delete(@PathVariable String id, RedirectAttributes attributes) {
-    Boolean b = blogService.deleteBlog(id);
+  public String delete(@PathVariable String id, HttpServletRequest request, RedirectAttributes attributes) {
+    String path= StringUtils.getItemPath(request);
+    Boolean b = blogService.deleteBlog(path,id);
     if (b) {
       attributes.addFlashAttribute("message", "删除成功");
     } else {

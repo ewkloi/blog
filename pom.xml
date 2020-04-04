@@ -80,6 +80,12 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+<!--    json-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.57</version>
+    </dependency>
 <!--  md转Html格式-->
     <dependency>
       <groupId>com.atlassian.commonmark</groupId>

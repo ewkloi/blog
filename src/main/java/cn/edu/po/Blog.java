@@ -42,33 +42,6 @@ public class Blog {
   private User user;//撰写博客的用户
   private List<Comment> comments = new ArrayList<>();//评论
 
-  @Override
-  public String toString() {
-    return "Blog{" +
-        "id='" + id + '\'' +
-        ", title='" + title + '\'' +
-        ", description='" + description + '\'' +
-        ", content='" + content + '\'' +
-        ", firstPicture='" + firstPicture + '\'' +
-        ", flag='" + flag + '\'' +
-        ", views=" + views +
-        ", appreciation=" + appreciation +
-        ", shareStatement=" + shareStatement +
-        ", commentabled=" + commentabled +
-        ", published=" + published +
-        ", recommend=" + recommend +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        ", userId='" + userId + '\'' +
-        ", typeId=" + typeId +
-        ", tagIds='" + tagIds + '\'' +
-        ", type=" + type +
-        ", tags=" + tags +
-        ", user=" + user +
-        ", comments=" + comments +
-        '}';
-  }
-
   public String getId() {
     return id;
   }

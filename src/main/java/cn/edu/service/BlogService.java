@@ -28,6 +28,6 @@ public interface BlogService {
   Boolean saveBlog(Blog blog);
   Boolean updateBlog(Blog blog);
   void updateViews(String id);
-  Boolean deleteBlog(String id);
+  Boolean deleteBlog(String path,String id);
 
 }

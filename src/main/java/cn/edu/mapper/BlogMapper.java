@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 public interface BlogMapper {
   int updateViews(String id);
   Blog findById(String id);
+  List<Blog> findByUid(String id);
   IndexBlog getDetailBlog(String id);
   int getBlogTotal();
   String getUidByBlogId(String id);

@@ -11,6 +11,7 @@ import cn.edu.po.BlogAndTag;
 import cn.edu.po.Tag;
 import cn.edu.service.BlogService;
 import cn.edu.service.CommentService;
+import cn.edu.utils.FileUtils;
 import cn.edu.utils.MarkDownUtils;
 import cn.edu.utils.StringUtils;
 import cn.edu.vo.BlogQuery;
@@ -24,6 +25,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -238,13 +241,21 @@ public class BlogServiceImpl implements BlogService {
     blogMapper.updateViews(id);
   }
   @Override
-  public Boolean deleteBlog(String id) {
+  public Boolean deleteBlog(String path,String id) {
+    Blog blog=blogMapper.findById(id);
     List<Long> cids=commentMapper.findIdsByBlogId(id);
     for(Long cid:cids){
       commentMapper.deleteById(cid);
     }
     blogAndTagMapper.deleteByBlogId(id);
-    blogMapper.delete(id);
+    int i=blogMapper.delete(id);
+    if (i>0){
+      Pattern p = Pattern.compile("!\\[\\]\\((.*)\\)");
+      Matcher m = p.matcher(blog.getContent());
+      while (m.find()) {
+        FileUtils.delete(path, m.group(1));
+      }
+    }
     return true;
   }
 }

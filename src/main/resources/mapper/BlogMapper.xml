@@ -61,6 +61,9 @@
   <select id="findById" resultType="cn.edu.po.Blog">
     select * from t_blog where id=#{id}
   </select>
+  <select id="findByUid" resultType="cn.edu.po.Blog">
+    select * from t_blog b where b.user_id=#{id}
+  </select>
 <!--获取未发布（草稿）博客-->
   <select id="getUnPublishedBlog" resultType="cn.edu.po.Blog">
     select * from t_blog where user_id=#{id} and published=false
